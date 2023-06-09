@@ -12,10 +12,11 @@ typedef int linklist_cmp(const void *,const void *);
 
 struct linklist_node_st
 {
-	void *data;
+	//void *data;
 	struct linklist_node_st *prev;
 	struct linklist_node_st *next;
-	
+	char data[1];//变长结构体的内容要放在当前结构体的最后一个成员,放在前面也可以，但是偏移地址的计算就是个棘手的问题
+
 };
 
 typedef struct

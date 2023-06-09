@@ -12,7 +12,7 @@ LINKLIST *linklist_create(int initsize)
 		return NULL;
 		
 	new->size = initsize;
-	new->head.data =NULL;
+	//new->head.data =NULL;
 	new->head.prev = &new->head;
 	new->head.next = &new->head;
 	return new;
@@ -24,14 +24,14 @@ int linklist_insert(LINKLIST *ptr,const void *data,int mode)
 {
 	struct linklist_node_st *newnode;
 	
-	newnode = malloc(sizeof(*newnode));
-	
+	//newnode = malloc(sizeof(*newnode));
+	newnode = malloc(sizeof(*newnode)+ptr->size);
 	if(newnode == NULL)
 		return -1;
 	
-	newnode->data = malloc(ptr->size);
-	if(newnode->data==NULL)
-		return -2;
+//	newnode->data = malloc(ptr->size);
+//	if(newnode->data==NULL)
+//		return -2;
 	
 	memcpy(newnode->data, data, ptr->size);
 	
@@ -93,7 +93,7 @@ int linklist_delete(LINKLIST *ptr,const void *key,linklist_cmp *cmp)
 	node->prev->next = node->next;
 	node->next->prev = node->prev;
 	
-	free(node->data);
+	//free(node->data);
 	free(node);
 	return 0; 
 }
@@ -108,7 +108,7 @@ int linklist_fetch(LINKLIST *ptr,const void *key,linklist_cmp *cmp,void *data)
 	if(data !=NULL)
 		memcpy(data,node->data,ptr->size);
 	
-	free(node->data);
+	//free(node->data);
 	free(node);
 	return 0;
 
@@ -130,7 +130,7 @@ void linklist_destroy(LINKLIST *ptr)
 	for(cur = ptr->head.next; cur != &ptr->head;cur=next)
 	{
 		next = cur->next;
-		free(cur->data);//data是要申请内存空间的，因为data 是一个指针，自己指向一块小空间
+		//free(cur->data);//data是要申请内存空间的，因为data 是一个指针，自己指向一块小空间
 		free(cur);
 		
 	

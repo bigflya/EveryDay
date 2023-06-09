@@ -63,21 +63,23 @@ int main()
 		tmp.math = rand()%100;
 		tmp.chinese = rand()%100;
 		
-		ret = linklist_insert(handler,&tmp,LINKLIST_BACKWARD);
+		ret =handler->insert(handler,&tmp,LINKLIST_BACKWARD);
 		if(ret)
 			exit(1);
 		
 	}
 	
-	linklist_travel(handler,print_s);
+	handler->travel(handler,print_s);
+	
+
 	printf("\n\n");
 	int id =30;
 	char *name ="std2";
-	ret = linklist_delete(handler,name,name_cmp);
+	ret = handler->del(handler,name,name_cmp);
 	if(ret)
 		printf("delete failed!\n");
 	
-	linklist_travel(handler,print_s);
+	handler->travel(handler,print_s);
 #if 0
 	int id =15;
 	struct score *data;

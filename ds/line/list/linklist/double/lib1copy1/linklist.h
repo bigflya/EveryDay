@@ -12,30 +12,31 @@ typedef int linklist_cmp(const void *,const void *);
 
 struct linklist_node_st
 {
-	void *data;
+	//void *data;
 	struct linklist_node_st *prev;
 	struct linklist_node_st *next;
-	
+	char data[1];//变长结构体的内容要放在当前结构体的最后一个成员,放在前面也可以，但是偏移地址的计算就是个棘手的问题
+
 };
 
-typedef struct
+typedef struct linklist_head
 {
 	int size;
 	struct linklist_node_st head;
+	
+	int (*insert)(struct linklist_head *,const void *,int);
+	
+	void *(*find)(struct linklist_head *,const void *,linklist_cmp *);
+
+	int (*del)(struct linklist_head *,const void *,linklist_cmp *);
+	int (*fetch)(struct linklist_head *,const void *,linklist_cmp *,void *);
+	void (*travel)(struct linklist_head *,linklist_operate *);
+	
 
 }LINKLIST;
 
 
 LINKLIST *linklist_create(int initsize);
-
-
-int linklist_insert(LINKLIST *,const void *data,int mode);
-
-void *linklist_find(LINKLIST *,const void *key,linklist_cmp *);
-
-int linklist_delete(LINKLIST *,const void *key,linklist_cmp *);
-int linklist_fetch(LINKLIST *,const void *key,linklist_cmp *,void *data);
-void linklist_travel(LINKLIST *,linklist_operate *);
 void linklist_destroy(LINKLIST *);
 
 
