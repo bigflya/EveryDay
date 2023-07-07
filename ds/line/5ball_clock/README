@@ -1,0 +1,1 @@
+打印警告的方法在makefile中输入 CFLAGS+=-Wall   然后在下面指位置输入$(CFLAGS)
