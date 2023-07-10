@@ -2,13 +2,13 @@
 #define QUEUE_H__
 
 #include "linklist.h"
-typedef LINGLIST QUEUE;
+typedef LINKLIST QUEUE;
 
-QUEUQ *queue_create();
+QUEUE *queue_create();
 
 
-queue_en(QUEUE *,const void *);
-queue_de();
+int queue_en(QUEUE *,const void *);
+int queue_de(QUEUE *,void *);
 
 void queue_destroy(QUEUE *);
 

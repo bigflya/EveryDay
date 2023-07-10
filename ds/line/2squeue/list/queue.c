@@ -3,7 +3,7 @@
 
 
 
-QUEUQ *queue_create(int size)
+QUEUE *queue_create(int size)
 {
 	return linklist_create(size);
 
@@ -16,7 +16,7 @@ int queue_en(QUEUE *ptr,const void *data)
 
 }
 
-static always_match(const void *p1,const void *p2)
+static int always_match(const void *p1,const void *p2)
 {
 	return 0;
 

@@ -1,6 +1,6 @@
 all:main
 
-main:linklist.o main.o stack.o
+main:linklist.o main.o queue.o
 
 	$(CC) $^ -o $@
 clean:
